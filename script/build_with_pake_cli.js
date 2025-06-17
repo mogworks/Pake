@@ -30,7 +30,7 @@ if (process.env.LOCAL === 'true' && !url.startsWith('/') && !url.startsWith('htt
   url = path.resolve('../../', url);
 }
 
-let params = `node cli.js "${url}" --name ${process.env.NAME} --height ${process.env.HEIGHT} --width ${process.env.WIDTH}`;
+let params = `node cli.js "${url}" --name ${process.env.NAME} --height ${process.env.HEIGHT} --width ${process.env.WIDTH} --installer-language zh-CN`;
 
 if (process.env.LOCAL === 'true') {
   params = `${params} --use-local-file`;
