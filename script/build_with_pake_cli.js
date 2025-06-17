@@ -9,6 +9,7 @@ console.log('Node.js info in your localhost ', process.version);
 console.log('\n=======================\n');
 console.log('Pake parameters is: ');
 console.log('url: ', process.env.URL);
+console.log('local: ', process.env.LOCAL);
 console.log('name: ', process.env.NAME);
 console.log('icon: ', process.env.ICON);
 console.log('height: ', process.env.HEIGHT);
@@ -21,6 +22,10 @@ console.log('===========================\n');
 
 cd('node_modules/pake-cli');
 let params = `node cli.js ${process.env.URL} --name ${process.env.NAME} --height ${process.env.HEIGHT} --width ${process.env.WIDTH}`;
+
+if (process.env.LOCAL === 'true') {
+  params = `${params} --use-local-file`;
+}
 
 if (process.env.HIDE_TITLE_BAR === 'true') {
   params = `${params} --hide-title-bar`;
