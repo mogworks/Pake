@@ -60,6 +60,7 @@ jobs:
 
       - name: Get XivStrat latest commit
         id: xivstrat-commit
+        shell: bash
         run: |
           COMMIT_SHA=$(git ls-remote https://github.com/mogworks/xivstrat.git com | cut -f1)
           echo "sha=$COMMIT_SHA" >> $GITHUB_OUTPUT
@@ -181,11 +182,13 @@ jobs:
           key: ${{ inputs.platform }}-cargo-${{ hashFiles('node_modules/pake-cli/src-tauri/Cargo.lock') }}
 
       - name: Install dependencies
+        shell: bash
         run: |
           npm install shelljs
           npm install axios
 
       - name: Build XivStrat with pake-cli
+        shell: bash
         run: |
           node ./script/build_with_pake_cli.js
         env:
