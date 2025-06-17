@@ -1,6 +1,7 @@
 import shelljs from 'shelljs';
 import axios from 'axios';
 import fs from 'fs';
+import path from 'path';
 
 const { exec, cd, mv } = shelljs;
 
@@ -26,7 +27,6 @@ cd('node_modules/pake-cli');
 let url = process.env.URL;
 if (process.env.LOCAL === 'true' && !url.startsWith('/') && !url.startsWith('http')) {
   // Convert relative path to absolute path
-  const path = require('path');
   url = path.resolve('../../', url);
 }
 
