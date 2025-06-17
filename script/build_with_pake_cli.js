@@ -21,7 +21,16 @@ console.log('targets type? only for Linux: ', process.env.TARGETS);
 console.log('===========================\n');
 
 cd('node_modules/pake-cli');
-let params = `node cli.js ${process.env.URL} --name ${process.env.NAME} --height ${process.env.HEIGHT} --width ${process.env.WIDTH}`;
+
+// Handle local file path
+let url = process.env.URL;
+if (process.env.LOCAL === 'true' && !url.startsWith('/') && !url.startsWith('http')) {
+  // Convert relative path to absolute path
+  const path = require('path');
+  url = path.resolve('../../', url);
+}
+
+let params = `node cli.js "${url}" --name ${process.env.NAME} --height ${process.env.HEIGHT} --width ${process.env.WIDTH}`;
 
 if (process.env.LOCAL === 'true') {
   params = `${params} --use-local-file`;

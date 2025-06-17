@@ -138,7 +138,7 @@ jobs:
         run: |
           node ./script/build_with_pake_cli.js
         env:
-          URL: './xivstrat/dist/index.html'
+          URL: 'xivstrat/dist/index.html'
           LOCAL: true
           NAME: 'XivStrat'
           ICON: ${{ inputs.icon }}
